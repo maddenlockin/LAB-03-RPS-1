@@ -1,1 +1,14 @@
 /* add home page styles here */
+input{
+    display: none;
+}
+
+input:checked + img{
+    border: 3px dashed cyan;
+}
+img{
+    height: 100px;
+}
+#shoot-btn{
+    display: block;
+}
