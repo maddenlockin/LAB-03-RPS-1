@@ -12,4 +12,6 @@
 ## Plan for App.js, utils.js and HTMl
 1) add radio buttons for picks
     -- HIDE the radio button
-2) in the ut
+2) in the uttils create the function for when the user won.
+3) let user know if they won lost or got a draw
+4) Update DOM and states.
