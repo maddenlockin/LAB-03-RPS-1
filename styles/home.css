@@ -9,6 +9,6 @@ input:checked + img{
 img{
     height: 100px;
 }
-#shoot-btn{
+#shoot-btn, #reset-btn{
     display: block;
 }
