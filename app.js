@@ -1,15 +1,11 @@
-import { whoWon, compThrow } from "./utils.js";
+import { whoWon, youHave, compThrow } from "./utils.js";
 
 // import functions and grab DOM elements
 const btn = document.querySelector('#shoot-btn');
-const winDiv = document.querySelector('#total-wins');
-const lossDiv = document.querySelector('#total-losses');
 const results = document.querySelector('#current-result');
-const tiesDiv = document.querySelector('#total-ties');
-const resetDiv = document.querySelector('#total-reset');
+
 const btnR = document.querySelector('#reset-btn');
 
-console.log(tiesDiv);
 // initialize state
 const choice = ['rock', 'paper', 'scissors'];
 let wins = 0;
@@ -22,13 +18,13 @@ btn.addEventListener('click', () => {
     const compChoice = compThrow(choice);
     //get guess
     const selectedRadio = document.querySelector('input:checked');
-    const userGuess = selectedRadio.value; 
+    const userGuess = selectedRadio.value;
     //get winner
     const winner = whoWon(userGuess, compChoice);
-    if (winner === 1){
+    if (winner === 1) {
         wins++;
         results.textContent = 'you won!';
-    } else if (winner === 0){
+    } else if (winner === 0) {
         ties++;
         results.textContent = 'you tied!';
     } else {
@@ -36,19 +32,20 @@ btn.addEventListener('click', () => {
     }
     totalGuess++;
     //update DOM
-    winDiv.textContent = `You won this many times: ${wins}`;
-    lossDiv.textContent = `You lost this many times: ${totalGuess - wins}`;
-    tiesDiv.textContent = `You have tied this many times: ${ties}`;
-    resetDiv.textContent = `You have reset this many times: ${resetsTot}`;
+    youHave(totalGuess, ties, wins, resetsTot);
 });
 
-btnR.addEventListener('click', () =>{
+btnR.addEventListener('click', () => {
     totalGuess = 0;
     ties = 0;
     wins = 0;
     resetsTot++;
-    winDiv.textContent = `You won this many times: ${wins}`;
-    lossDiv.textContent = `You lost this many times: ${totalGuess - wins}`;
-    tiesDiv.textContent = `You have tied this many times: ${ties}`;
-    resetDiv.textContent = `You have reset this many times: ${resetsTot}`;
+    youHave(totalGuess, ties, wins, resetsTot);
+    
+    let selectedRadio = document.querySelector('#rock');
+    selectedRadio.checked = false;
+    let pRadio = document.querySelector('#paper');
+    pRadio.checked = false;
+    let sRadio = document.querySelector('#scissors');
+    sRadio.checked = false;
 });
